@@ -1,10 +1,8 @@
-package com.br.meli.desafioquality;
+package com.br.meli.desafioquality.service;
 
-import com.br.meli.desafioquality.dto.PropertyDTO;
-import com.br.meli.desafioquality.dto.PropertySizeDTO;
-import com.br.meli.desafioquality.dto.PropertyValueDTO;
-import com.br.meli.desafioquality.dto.RoomDTO;
+import com.br.meli.desafioquality.dto.*;
 import com.br.meli.desafioquality.model.District;
+import com.br.meli.desafioquality.model.Property;
 import com.br.meli.desafioquality.model.Room;
 import com.br.meli.desafioquality.repository.DistrictRepository;
 import com.br.meli.desafioquality.service.PropertyService;
@@ -35,9 +33,9 @@ public class PropertyServiceTest {
         PropertyDTO property = createPropertyDTO();
         Double expectedSize = 300.0;
 
-        PropertySizeDTO resultSize = propertyService.getPropertySize(property);
+        PropertySizeDTO result = propertyService.getPropertySize(property);
 
-        assertEquals(expectedSize, resultSize);
+        assertEquals(expectedSize, result.getPropertySize());
     }
 
     @Test
@@ -48,7 +46,7 @@ public class PropertyServiceTest {
 
         PropertyValueDTO result = propertyService.getPropertyValue(propertyDTO);
 
-        assertEquals(expected, result);
+        assertEquals(expected, result.getPropertyValue());
     }
 
     @Test
@@ -63,12 +61,12 @@ public class PropertyServiceTest {
 
     @Test
     void shouldReturnTheSizeOfEachRoom() throws Exception {
-        //PropertyDTO property = createPropertyDTO();
-        //Room expected = new Room("dormRoom", 20.0, 10.0);
+        PropertyDTO property = createPropertyDTO();
 
-        //List<RoomDTO> result = propertyService.getSizeOfEachRoom(property);
+        List<RoomWithSizeDTO> result = propertyService.getSizeOfEachRoom(property);
 
-        //assertThat(result).usingRecursiveComparison().isEqualTo(expected);
+        assertEquals(100.0, result.get(0).getRoomSize());
+        assertEquals(200.0, result.get(1).getRoomSize());
     }
 
     private PropertyDTO createPropertyDTO() {
