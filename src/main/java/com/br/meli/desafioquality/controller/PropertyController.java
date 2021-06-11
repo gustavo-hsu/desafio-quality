@@ -17,22 +17,22 @@ public class PropertyController {
     private PropertyService propertyService;
 
     @PostMapping("/size")
-    public ResponseEntity getPropertySize(@RequestBody @Valid PropertyDTO house) throws Exception {
-        return new ResponseEntity (propertyService.getPropertySize(house), HttpStatus.OK);
+    public ResponseEntity getPropertySize(@RequestBody @Valid PropertyDTO property) throws Exception {
+        return new ResponseEntity (propertyService.getPropertySize(property), HttpStatus.OK);
     }
 
     @PostMapping("/value")
-    public ResponseEntity getPropertyValue(@RequestBody @Valid PropertyDTO house) throws Exception {
-        return new ResponseEntity (propertyService.getPropertyValue(house), HttpStatus.OK);
+    public ResponseEntity getPropertyValue(@RequestBody @Valid PropertyDTO property) throws Exception {
+        return new ResponseEntity (propertyService.getPropertyValue(property), HttpStatus.OK);
     }
 
     @PostMapping("/biggestRoom")
-    public ResponseEntity getBiggestRoom(@RequestBody @Valid PropertyDTO house) throws Exception {
-        return new ResponseEntity (propertyService.getBiggestRoom(house), HttpStatus.OK);
+    public ResponseEntity getBiggestRoom(@RequestBody @Valid PropertyDTO property) throws Exception {
+        return new ResponseEntity (propertyService.getBiggestRoom(property), HttpStatus.OK);
     }
 
     @PostMapping("/room/sizes")
-    public void getTotalSizesByRoom(@RequestBody Property property) {
-        //return houseService.getTotalSizeByRoom(house);
+    public ResponseEntity getTotalSizesByRoom(@RequestBody PropertyDTO property) throws Exception {
+        return new ResponseEntity (propertyService.getSizeOfEachRoom(property), HttpStatus.OK);
     }
 }
