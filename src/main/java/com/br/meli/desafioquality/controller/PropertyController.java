@@ -32,7 +32,7 @@ public class PropertyController {
     }
 
     @PostMapping("/room/sizes")
-    public ResponseEntity getTotalSizesByRoom(@RequestBody PropertyDTO property) throws Exception {
+    public ResponseEntity getTotalSizesByRoom(@RequestBody @Valid PropertyDTO property) throws Exception {
         return new ResponseEntity (propertyService.getSizeOfEachRoom(property), HttpStatus.OK);
     }
 }

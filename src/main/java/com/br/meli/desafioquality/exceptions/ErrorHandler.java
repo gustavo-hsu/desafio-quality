@@ -15,7 +15,12 @@ import java.util.Map;
 @ControllerAdvice
 public class ErrorHandler{
     @ExceptionHandler(value = { MethodArgumentNotValidException.class})
-    protected ResponseEntity<Object> handleDefault(MethodArgumentNotValidException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValidEx(MethodArgumentNotValidException ex) {
         return new ResponseEntity<>(ex.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = { DistrictNotFoundException.class})
+    protected ResponseEntity<Object> handleDistrictNotFoundEx(DistrictNotFoundException ex) {
+        return new ResponseEntity<>(ex.getDescription(), HttpStatus.NOT_FOUND);
     }
 }

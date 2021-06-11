@@ -35,5 +35,4 @@ public class PropertyControllerTest {
     private String createRoom(String name, Double width, Double length) {
         return "{\"roomName\": \"" + name + "\", \"roomWidth\": " + width + ", \"roomLength\": " + length + "}";
     }
-
 }
