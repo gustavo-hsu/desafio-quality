@@ -1,6 +1,7 @@
 package com.br.meli.desafioquality.controller;
 
 import com.br.meli.desafioquality.dto.HouseDTO;
+import com.br.meli.desafioquality.dto.PropertySizeDTO;
 import com.br.meli.desafioquality.model.House;
 import com.br.meli.desafioquality.service.HouseService;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ public class HouseController {
     }
 
     @PostMapping("/room/sizes")
-    public HashMap<String, Double> getTotalSizesByRoom(@RequestBody House house) {
-        return houseService.getTotalSizeByRoom(house);
+    public void getTotalSizesByRoom(@RequestBody House house) {
+        //return houseService.getTotalSizeByRoom(house);
     }
 }

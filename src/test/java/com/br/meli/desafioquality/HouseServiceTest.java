@@ -1,6 +1,7 @@
 package com.br.meli.desafioquality;
 
 import com.br.meli.desafioquality.dto.HouseDTO;
+import com.br.meli.desafioquality.dto.PropertySizeDTO;
 import com.br.meli.desafioquality.dto.RoomDTO;
 import com.br.meli.desafioquality.model.District;
 import com.br.meli.desafioquality.model.Room;
@@ -33,7 +34,7 @@ public class HouseServiceTest {
         HouseDTO house = createHouseDTO();
         Double expectedSize = 300.0;
 
-        Double resultSize = houseService.getHouseSize(house);
+        PropertySizeDTO resultSize = houseService.getHouseSize(house);
 
         assertEquals(expectedSize, resultSize);
     }
@@ -57,6 +58,16 @@ public class HouseServiceTest {
         Room result = houseService.getBiggestRoom(house);
 
         assertThat(result).usingRecursiveComparison().isEqualTo(expected);
+    }
+
+    @Test
+    void shouldReturnTheSizeOfEachRoom() throws Exception {
+        //HouseDTO house = createHouseDTO();
+        //Room expected = new Room("dormRoom", 20.0, 10.0);
+
+        //List<RoomDTO> result = houseService.getSizeOfEachRoom(house);
+
+        //assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
 
     private HouseDTO createHouseDTO() {

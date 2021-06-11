@@ -1,25 +1,40 @@
 package com.br.meli.desafioquality;
 
-import com.br.meli.desafioquality.model.District;
-import com.br.meli.desafioquality.model.House;
-import com.br.meli.desafioquality.model.Room;
-import com.br.meli.desafioquality.service.HouseService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Arrays;
-import java.util.List;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 @SpringBootTest
+@AutoConfigureMockMvc
 public class HouseControllerTest {
 
     @Autowired
-    HouseService houseService;
-
+    private MockMvc mockMvc;
 
     @Test
-    void shouldReturnHouseTotalSize() {
+    void shouldReturnHouseTotalSize() throws Exception {
+        String request = "{\"propName\": \"A name\", \"propDistrict\": \"Liberdade\", \"rooms\": ["
+                + createRoom("oneRoom", 10.0, 10.0) + "," +
+                createRoom("anotherRoom", 5.0, 5.0) +
+                "]}";
 
+        this.mockMvc.perform(post("/house/size").contentType(MediaType.APPLICATION_JSON).content(request))
+                .andDo(print())
+                .andExpect(jsonPath("$.propertySize").value(125))
+                .andExpect(status().isOk());
     }
+
+    private String createRoom(String name, Double width, Double length) {
+        return "{\"roomName\": \"" + name + "\", \"roomWidth\": " + width + ", \"roomLength\": " + length + "}";
+    }
+
 }

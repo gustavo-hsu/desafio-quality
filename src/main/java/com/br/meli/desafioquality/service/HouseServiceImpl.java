@@ -1,22 +1,26 @@
 package com.br.meli.desafioquality.service;
 
 import com.br.meli.desafioquality.dto.HouseDTO;
+import com.br.meli.desafioquality.dto.PropertySizeDTO;
+import com.br.meli.desafioquality.dto.RoomDTO;
+import com.br.meli.desafioquality.dto.RoomWithSizeDTO;
 import com.br.meli.desafioquality.model.House;
 import com.br.meli.desafioquality.model.Room;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Component
 @AllArgsConstructor
 public class HouseServiceImpl implements HouseService {
     private HouseConverter houseConverter;
-    @Override
-    public Double getHouseSize(HouseDTO houseDTO) throws Exception {
-        House house = houseConverter.fromRequestToEntity(houseDTO);
 
-        return house.getTotalSize();
+    @Override
+    public PropertySizeDTO getHouseSize(HouseDTO houseDTO) throws Exception {
+        House house = houseConverter.fromRequestToEntity(houseDTO);
+        return new PropertySizeDTO(house.getTotalSize());
     }
 
     public Double getHouseValue(HouseDTO houseDTO) throws Exception {
@@ -29,13 +33,11 @@ public class HouseServiceImpl implements HouseService {
         return house.getBiggestRoom();
     }
 
-    public HashMap<String, Double> getTotalSizeByRoom(House house) {
-        HashMap<String, Double> roomSizesHashMap = new HashMap<>();
+    @Override
+    public List<RoomWithSizeDTO> getSizeOfEachRoom(HouseDTO houseDTO) throws Exception {
+        House house = houseConverter.fromRequestToEntity(houseDTO);
 
-        for (Room room: house.getRooms()) {
-            roomSizesHashMap.put(room.getName(), room.getSize());
-        }
-
-        return roomSizesHashMap;
+        return null;
     }
+
 }
