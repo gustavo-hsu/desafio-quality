@@ -31,7 +31,7 @@ public class PropertyController {
         return new ResponseEntity (propertyService.getBiggestRoom(property), HttpStatus.OK);
     }
 
-    @PostMapping("/room/sizes")
+    @PostMapping("/rooms/size")
     public ResponseEntity getTotalSizesByRoom(@RequestBody @Valid PropertyDTO property) throws Exception {
         return new ResponseEntity (propertyService.getSizeOfEachRoom(property), HttpStatus.OK);
     }

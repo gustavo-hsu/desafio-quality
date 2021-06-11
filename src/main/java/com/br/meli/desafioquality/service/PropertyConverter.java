@@ -15,7 +15,7 @@ import java.util.List;
 public class PropertyConverter {
     DistrictRepository districtRepository;
 
-    public Property fromRequestToEntity(PropertyDTO propertyDTO) throws Exception {
+    public Property fromDTOToEntity(PropertyDTO propertyDTO) throws Exception {
         District district = districtRepository.findByName(propertyDTO.getPropDistrict());
 
         List<Room> rooms = propertyDTO.getAllRooms();

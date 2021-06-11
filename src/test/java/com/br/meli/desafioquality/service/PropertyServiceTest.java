@@ -1,6 +1,7 @@
 package com.br.meli.desafioquality.service;
 
 import com.br.meli.desafioquality.dto.*;
+import com.br.meli.desafioquality.exceptions.DistrictNotFoundException;
 import com.br.meli.desafioquality.model.District;
 import com.br.meli.desafioquality.model.Property;
 import com.br.meli.desafioquality.model.Room;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -39,14 +41,22 @@ public class PropertyServiceTest {
     }
 
     @Test
-    void shouldReturnPropertyValue() throws Exception {
-        when(districtRepository.findByName(any())).thenReturn(new District("mock", 10.0));
+    void shouldReturnPropertyValueWhenDistrictExists() throws Exception {
+        when(districtRepository.findByName(any())).thenReturn(new District("District", 10.0));
         PropertyDTO propertyDTO = createPropertyDTO();
         Double expected = 3000.0;
 
         PropertyValueDTO result = propertyService.getPropertyValue(propertyDTO);
 
         assertEquals(expected, result.getPropertyValue());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenDistrictNotFound() throws Exception {
+        when(districtRepository.findByName(any())).thenThrow(new DistrictNotFoundException("District not found"));
+        PropertyDTO propertyDTO = createPropertyDTO();
+
+        assertThrows(DistrictNotFoundException.class, () -> propertyService.getPropertyValue(propertyDTO));
     }
 
     @Test

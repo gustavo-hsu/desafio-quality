@@ -19,7 +19,7 @@ import java.util.List;
 public class PropertyDTO {
     @NotBlank(message = "The name of the property can not be empty")
     @Size(max = 30, message = "The property name length can not have more than 30 characters")
-    @Pattern(regexp="^[A-Z][a-zA-Z ]*$")
+    @Pattern(regexp="[A-Z][a-zA-Z áàâãéêíóôõúçÁÀÂÃÉÍÓÔÚÇ]*", message = "The name needs to start with uppercase")
     private String propName;
 
     @NotBlank(message = "The name of the district can not be empty")

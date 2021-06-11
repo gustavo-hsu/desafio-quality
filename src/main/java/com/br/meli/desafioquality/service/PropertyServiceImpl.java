@@ -19,25 +19,25 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public PropertySizeDTO getPropertySize(PropertyDTO propertyDTO) throws Exception {
-        Property property = propertyConverter.fromRequestToEntity(propertyDTO);
+        Property property = propertyConverter.fromDTOToEntity(propertyDTO);
         return new PropertySizeDTO(property.getTotalSize());
     }
 
     @Override
     public PropertyValueDTO getPropertyValue(PropertyDTO propertyDTO) throws Exception {
-        Property property = propertyConverter.fromRequestToEntity(propertyDTO);
+        Property property = propertyConverter.fromDTOToEntity(propertyDTO);
         return new PropertyValueDTO(property.getValue());
     }
 
     @Override
     public Room getBiggestRoom(PropertyDTO propertyDTO) throws Exception {
-        Property property = propertyConverter.fromRequestToEntity(propertyDTO);
+        Property property = propertyConverter.fromDTOToEntity(propertyDTO);
         return property.getBiggestRoom();
     }
 
     @Override
     public List<RoomWithSizeDTO> getSizeOfEachRoom(PropertyDTO propertyDTO) throws Exception {
-        Property property = propertyConverter.fromRequestToEntity(propertyDTO);
+        Property property = propertyConverter.fromDTOToEntity(propertyDTO);
 
         List<RoomWithSizeDTO> roomWithSizeDTOS = new ArrayList<>();
 

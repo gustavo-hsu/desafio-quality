@@ -4,6 +4,8 @@ import com.br.meli.desafioquality.model.District;
 import com.br.meli.desafioquality.model.Property;
 import com.br.meli.desafioquality.model.Room;
 import org.assertj.core.util.Lists;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
