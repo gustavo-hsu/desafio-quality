@@ -1,12 +1,13 @@
 package com.br.meli.desafioquality;
 
-import com.br.meli.desafioquality.dto.HouseDTO;
+import com.br.meli.desafioquality.dto.PropertyDTO;
 import com.br.meli.desafioquality.dto.PropertySizeDTO;
+import com.br.meli.desafioquality.dto.PropertyValueDTO;
 import com.br.meli.desafioquality.dto.RoomDTO;
 import com.br.meli.desafioquality.model.District;
 import com.br.meli.desafioquality.model.Room;
 import com.br.meli.desafioquality.repository.DistrictRepository;
-import com.br.meli.desafioquality.service.HouseService;
+import com.br.meli.desafioquality.service.PropertyService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,60 +22,60 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class HouseServiceTest {
+public class PropertyServiceTest {
 
     @Autowired
-    HouseService houseService;
+    PropertyService propertyService;
 
     @MockBean
     DistrictRepository districtRepository;
 
     @Test
-    void shouldReturnHouseSize() throws Exception {
-        HouseDTO house = createHouseDTO();
+    void shouldReturnPropertySize() throws Exception {
+        PropertyDTO property = createPropertyDTO();
         Double expectedSize = 300.0;
 
-        PropertySizeDTO resultSize = houseService.getHouseSize(house);
+        PropertySizeDTO resultSize = propertyService.getPropertySize(property);
 
         assertEquals(expectedSize, resultSize);
     }
 
     @Test
-    void shouldReturnHouseValue() throws Exception {
+    void shouldReturnPropertyValue() throws Exception {
         when(districtRepository.findByName(any())).thenReturn(new District("mock", 10.0));
-        HouseDTO house = createHouseDTO();
+        PropertyDTO propertyDTO = createPropertyDTO();
         Double expected = 3000.0;
 
-        Double result= houseService.getHouseValue(house);
+        PropertyValueDTO result = propertyService.getPropertyValue(propertyDTO);
 
         assertEquals(expected, result);
     }
 
     @Test
     void shouldReturnBiggestRoom() throws Exception {
-        HouseDTO house = createHouseDTO();
+        PropertyDTO property = createPropertyDTO();
         Room expected = new Room("dormRoom", 20.0, 10.0);
 
-        Room result = houseService.getBiggestRoom(house);
+        Room result = propertyService.getBiggestRoom(property);
 
         assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
 
     @Test
     void shouldReturnTheSizeOfEachRoom() throws Exception {
-        //HouseDTO house = createHouseDTO();
+        //PropertyDTO property = createPropertyDTO();
         //Room expected = new Room("dormRoom", 20.0, 10.0);
 
-        //List<RoomDTO> result = houseService.getSizeOfEachRoom(house);
+        //List<RoomDTO> result = propertyService.getSizeOfEachRoom(property);
 
         //assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
 
-    private HouseDTO createHouseDTO() {
+    private PropertyDTO createPropertyDTO() {
         RoomDTO room = new RoomDTO("kitchen", 10.0, 10.0);
         RoomDTO room2 = new RoomDTO("dormRoom", 20.0, 10.0);
         List<RoomDTO> rooms = Arrays.asList(room, room2);
 
-        return new HouseDTO("My house name is beautiful", "Liberdade", rooms);
+        return new PropertyDTO("My property name is beautiful", "Liberdade", rooms);
     }
 }

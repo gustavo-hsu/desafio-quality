@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HouseControllerTest {
+public class PropertyControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -27,8 +27,7 @@ public class HouseControllerTest {
                 createRoom("anotherRoom", 5.0, 5.0) +
                 "]}";
 
-        this.mockMvc.perform(post("/house/size").contentType(MediaType.APPLICATION_JSON).content(request))
-                .andDo(print())
+        this.mockMvc.perform(post("/property/size").contentType(MediaType.APPLICATION_JSON).content(request))
                 .andExpect(jsonPath("$.propertySize").value(125))
                 .andExpect(status().isOk());
     }

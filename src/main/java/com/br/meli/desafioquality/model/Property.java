@@ -11,12 +11,12 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class House {
+public class Property {
     private String name;
     private List<Room> rooms;
     private District district;
 
-    public House(String propName, List<Room> rooms) {
+    public Property(String propName, List<Room> rooms) {
         this.name = propName;
         this.rooms = rooms;
     }
