@@ -1,4 +1,4 @@
-package com.br.meli.desafioquality;
+package com.br.meli.desafioquality.model;
 
 import com.br.meli.desafioquality.model.Room;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class PropertyTest {
+public class RoomTest {
 
     @Test
     void shouldReturnRoomSize() {

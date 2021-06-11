@@ -22,5 +22,4 @@ public class PropertyConverter {
 
         return new Property(propertyDTO.getPropName(), rooms, district);
     }
-
 }
