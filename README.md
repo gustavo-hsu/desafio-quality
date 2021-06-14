@@ -1,7 +1,7 @@
 
-# How to test the application 
+# How to use the app
 
-## You can use the POSTMAN 
+## Import:
 <a href="/src/main/resources/desafio-quality.postman_collection.json"> Postman Collection </a>
 
 ____

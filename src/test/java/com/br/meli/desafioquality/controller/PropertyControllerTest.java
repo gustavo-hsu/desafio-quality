@@ -52,7 +52,7 @@ public class PropertyControllerTest {
                 createRoom("anotherRoom", 5.0, 5.0) +
                 "]}";
 
-        this.mockMvc.perform(post("/property/biggestRoom").contentType(MediaType.APPLICATION_JSON).content(request))
+        this.mockMvc.perform(post("/property/biggest-room").contentType(MediaType.APPLICATION_JSON).content(request))
                 .andExpect(jsonPath("$.name").value("biggestRoom"))
                 .andExpect(jsonPath("$.size").value("100.0"))
                 .andExpect(status().isOk());
