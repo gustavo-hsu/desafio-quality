@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class PropertyServiceImpl implements PropertyService {
-    private PropertyConverter propertyConverter;
+    private PropertyConverterImpl propertyConverter;
 
     @Override
     public PropertySizeDTO getPropertySize(PropertyDTO propertyDTO) throws Exception {
