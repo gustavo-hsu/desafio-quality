@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "4e0d3a8a-1291-4393-85fc-cd08b67b4c86",
+		"name": "desafio-quality",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Property Size",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propName\": \"Nome da propriedade\",\n    \"propDistrict\": \"Liberdade do bairro\",\n    \"rooms\": [\n        {\n            \"roomName\": \"quarto\",\n            \"roomWidth\": 10,\n            \"roomLength\": 10\n        },\n        {\n            \"roomName\": \"quarto2\",\n            \"roomWidth\": 10,\n            \"roomLength\": 20\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/property/size",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property",
+						"size"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PropertyValue",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propName\": \"Casa nome\",\n    \"propDistrict\": \"Liberdade do bairro\",\n    \"rooms\": [\n        {\n            \"roomName\": \"quarto\",\n            \"roomWidth\": 10,\n            \"roomLength\": 10\n        },\n        {\n            \"roomName\": \"quarto\",\n            \"roomWidth\": 10,\n            \"roomLength\": 10\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/property/value",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property",
+						"value"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Biggest Room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propName\": \"Casa nome\",\n    \"propDistrict\": \"Liberdade do bairro\",\n    \"rooms\": [\n        {\n            \"roomName\": \"quarto\",\n            \"roomWidth\": 10,\n            \"roomLength\": 10\n        },\n        {\n            \"roomName\": \"quarto\",\n            \"roomWidth\": 25,\n            \"roomLength\": 10\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/property/biggest-room",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property",
+						"biggest-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rooms size",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"propName\": \"Casa nome\",\n    \"propDistrict\": \"Liberdade do bairro\",\n    \"rooms\": [\n        {\n            \"roomName\": \"quarto\",\n            \"roomWidth\": 12,\n            \"roomLength\": 10\n        },\n        {\n            \"roomName\": \"quarto\",\n            \"roomWidth\": 10,\n            \"roomLength\": 10\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/property/rooms/size",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"property",
+						"rooms",
+						"size"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

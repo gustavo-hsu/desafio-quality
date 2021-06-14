@@ -2,7 +2,7 @@
 # How to test the application 
 
 ## You can use the POSTMAN 
-<a href="/src/main/resources/PostmanCollection.json"> Postman Collection </a>
+<a href="/src/main/resources/desafio-quality.postman_collection.json"> Postman Collection </a>
 
 ____
 ### All endpoints use the same request body below:
