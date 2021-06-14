@@ -26,7 +26,7 @@ public class PropertyController {
         return new ResponseEntity (propertyService.getPropertyValue(property), HttpStatus.OK);
     }
 
-    @PostMapping("/biggestRoom")
+    @PostMapping("/biggest-room")
     public ResponseEntity getBiggestRoom(@RequestBody @Valid PropertyDTO property) throws Exception {
         return new ResponseEntity (propertyService.getBiggestRoom(property), HttpStatus.OK);
     }
